@@ -12,6 +12,7 @@ jobs:
 
       - name: Publish image
         uses: elgohr/Publish-Docker-Github-Action@v4
+        working-directory: backend
         with:
           name: emilykok/inf2-project-d/backend
           username: ${{ github.actor }}
