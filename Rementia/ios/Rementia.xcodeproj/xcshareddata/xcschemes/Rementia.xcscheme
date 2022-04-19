@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "Rementia.app"
-               BlueprintName = "Rementia"
-               ReferencedContainer = "container:Rementia.xcodeproj">
+               BuildableName = "rementia.app"
+               BlueprintName = "rementia"
+               ReferencedContainer = "container:rementia.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "RementiaTests.xctest"
-               BlueprintName = "RementiaTests"
-               ReferencedContainer = "container:Rementia.xcodeproj">
+               BuildableName = "rementiaTests.xctest"
+               BlueprintName = "rementiaTests"
+               ReferencedContainer = "container:rementia.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Rementia.app"
-            BlueprintName = "Rementia"
-            ReferencedContainer = "container:Rementia.xcodeproj">
+            BuildableName = "rementia.app"
+            BlueprintName = "rementia"
+            ReferencedContainer = "container:rementia.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Rementia.app"
-            BlueprintName = "Rementia"
-            ReferencedContainer = "container:Rementia.xcodeproj">
+            BuildableName = "rementia.app"
+            BlueprintName = "rementia"
+            ReferencedContainer = "container:rementia.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
