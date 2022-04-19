@@ -12,10 +12,10 @@ jobs:
 
       - name: Publish image
         uses: elgohr/Publish-Docker-Github-Action@v4
-        working-directory: backend
         with:
           name: emilykok/inf2-project-d/backend
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           tags: ${{ github.head_ref || github.ref_name }}
           registry: ghcr.io
+          workdir: backend
