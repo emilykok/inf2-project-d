@@ -8,6 +8,7 @@ declare module 'express' {
       id: number;
       name: string;
       email: string;
+      phone: string;
       contacts: Contact[];
       messages: Message[];
     };

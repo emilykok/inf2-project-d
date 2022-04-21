@@ -1,6 +1,7 @@
-import { PrismaService } from '@modules/Prisma/prisma.service';
-import { Argon2CryptoProvider } from '@modules/providers/argon2.provider';
-import { UserService } from '@modules/User/user.service';
+// TODO: check if this is still needed
+//import { PrismaService } from '@modules/Prisma/prisma.service';
+import { Argon2CryptoProvider } from '../providers/argon2.provider';
+import { UserService } from '../User/user.service';
 import {
   Body,
   Controller,
@@ -11,7 +12,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { User } from '@prisma/client';
-import { CurrentUser, Public } from '@decorators';
+import { CurrentUser, Public } from '../decorators';
 import { AuthService } from './auth.service';
 import { SignInDto } from './dto/sign-in.dto';
 
@@ -23,7 +24,7 @@ export class AuthController {
     @Inject('CRYPTO') private crypto: Argon2CryptoProvider,
   ) {}
 
-  @Post('/token')
+  @Post('/token') // <-- this is the login frontend!
   @Public()
   async getJwt(@Body() loginBody: SignInDto): Promise<{
     token: string;

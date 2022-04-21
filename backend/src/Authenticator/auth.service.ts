@@ -1,4 +1,4 @@
-import { JwtPayload } from '@lib/interfaces/auth';
+import { JwtPayload } from '../Libraries/interfaces/auth';
 import { Injectable } from '@nestjs/common';
 import { User } from '@prisma/client';
 import { sign, verify } from 'jsonwebtoken';
@@ -20,8 +20,7 @@ export class AuthService {
       sub: user.id,
       user: {
         id: user.id,
-        username: user.username,
-        role: user.role,
+        name: user.name,
       },
     };
 

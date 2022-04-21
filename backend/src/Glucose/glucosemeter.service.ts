@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma.service';
+import { PrismaService } from '../../prisma/prisma.service';
 
 import { GlucoseMeter, GlucoseValue, Prisma } from '@prisma/client';
 
@@ -49,7 +49,7 @@ export class GlucoseMeterService {
   }
 
   // Get glucose meter data by user id
-  async getGlucoseMeterDataByUserId(userId: number): Promise<GlucoseValue[]> {
+  async getGlucoseMeterDataByUserId(userId: string): Promise<GlucoseValue[]> {
     return this.prisma.glucoseValue.findMany({
       where: {
         GlucoseMeter: {
@@ -61,7 +61,7 @@ export class GlucoseMeterService {
 
   // Get glucose meter data by user id and date
   async getGlucoseMeterDataByUserIdAndDate(
-    userId: number,
+    userId: string,
     timestamp: Date,
   ): Promise<GlucoseValue> {
     return this.prisma.glucoseValue.findFirst({
