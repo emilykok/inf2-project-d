@@ -18,6 +18,6 @@ jobs:
           name: emilykok/inf2-project-d/backend
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          tags: ${${{env.BRANCH_NAME}}//\//-}
+          tags: ${{env.BRANCH_NAME}}//\//-
           registry: ghcr.io
           workdir: backend
