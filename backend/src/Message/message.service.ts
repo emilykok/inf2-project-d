@@ -1,25 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from './prisma.service';
+import { PrismaService } from '../prisma.service';
 import { Message, Prisma } from '@prisma/client';
 
 @Injectable()
-export class PostService {
+export class MessageService {
   constructor(private prisma: PrismaService) {}
 
   async Message(
-    userWhereUniqueInput: Prisma.UserWhereUniqueInput,
+    messageWhereUniqueInput: Prisma.MessageWhereUniqueInput,
   ): Promise<Message | null> {
     return this.prisma.message.findUnique({
-      where: userWhereUniqueInput,
+      where: messageWhereUniqueInput,
     });
   }
 
   async Messages(params: {
     skip?: number;
     take?: number;
-    cursor?: Prisma.UserWhereUniqueInput;
-    where?: Prisma.UserWhereInput;
-    orderBy?: Prisma.UserOrderByWithRelationInput;
+    cursor?: Prisma.MessageWhereUniqueInput;
+    where?: Prisma.MessageWhereInput;
+    orderBy?: Prisma.MessageOrderByWithRelationInput;
   }): Promise<Message[]> {
     const { skip, take, cursor, where, orderBy } = params;
     return this.prisma.message.findMany({

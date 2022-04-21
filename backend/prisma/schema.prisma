@@ -24,7 +24,7 @@ model GlucoseMeter {
   serial String         @id
   values GlucoseValue[]
   User   User           @relation(fields: [userId], references: [id])
-  userId Int
+  userId Int            @unique
 }
 
 model GlucoseValue {
@@ -45,7 +45,7 @@ model User {
   Message  Message[]
 
   // Glucose meter either full or empty ==> optional field
-  glucoseMeters GlucoseMeter[]
+  glucoseMeters GlucoseMeter?
 
   // Used to indicate if the user is a patient or a caregiver
   clearance Int @default(0)
