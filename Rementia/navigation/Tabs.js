@@ -11,17 +11,28 @@ import LoginScreen from '../screens/LoginScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 
 const Tab = createBottomTabNavigator();
+const HomeName = 'Home';
+const GlucoMeterName = 'GlucoMeter';
+const CalenderName = 'Calender';
+const ContactName = 'Contact';
+const InboxName = 'Inbox';
+const ProfileName = 'Profile';
+const LoginName = 'Login';
 
 const Tabs = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="GlucoMeter" component={GlucoMeterScreen} />
-      <Tab.Screen name="Calender" component={CalenderScreen} />
-      <Tab.Screen name="Contact" component={ContactScreen} />
-      <Tab.Screen name="Inbox" component={InboxScreen} />
-      <Tab.Screen name="Login" component={LoginScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+    <Tab.Navigator
+      initialRouteName={HomeName}
+      screenOptions={({route}) => ({
+        tabBarShowLabel: false
+      })}>
+      <Tab.Screen name={HomeName} component={HomeScreen} />
+      <Tab.Screen name={GlucoMeterName} component={GlucoMeterScreen} />
+      <Tab.Screen name={CalenderName} component={CalenderScreen} />
+      <Tab.Screen name={ContactName} component={ContactScreen} />
+      <Tab.Screen name={InboxName} component={InboxScreen} />
+      <Tab.Screen name={LoginName} component={LoginScreen} />
+      <Tab.Screen name={ProfileName} component={ProfileScreen} />
     </Tab.Navigator>
   );
 };
