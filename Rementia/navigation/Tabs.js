@@ -7,21 +7,149 @@ import GlucoMeterScreen from '../screens/GlucoMeterScreen';
 import CalenderScreen from '../screens/CalenderScreen';
 import ContactScreen from '../screens/ContactScreen';
 import InboxScreen from '../screens/InboxScreen';
-import LoginScreen from '../screens/LoginScreen';
-import ProfileScreen from '../screens/ProfileScreen';
+import MenuScreen from '../screens/MenuScreen';
+import {View, Image} from 'react-native';
 
 const Tab = createBottomTabNavigator();
+const HomeName = 'Home';
+const GlucoMeterName = 'GlucoMeter';
+const CalenderName = 'Calender';
+const ContactName = 'Contact';
+const InboxName = 'Inbox';
+const MenuName = 'Menu';
 
 const Tabs = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="GlucoMeter" component={GlucoMeterScreen} />
-      <Tab.Screen name="Calender" component={CalenderScreen} />
-      <Tab.Screen name="Contact" component={ContactScreen} />
-      <Tab.Screen name="Inbox" component={InboxScreen} />
-      <Tab.Screen name="Login" component={LoginScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+    <Tab.Navigator
+      initialRouteName={HomeName}
+      screenOptions={({route}) => ({
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          position: 'absolute',
+          bottom: 0,
+          backgroundColor: '#FFFFFF',
+        },
+        //tabBarActiveTintColor: '#008A8A',
+      })}>
+      <Tab.Screen
+        name={HomeName}
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image
+                source={require('../assets/home.png')}
+                resizeMode="contain"
+                style={{
+                  width: 25,
+                  height: 25,
+                  tintColor: focused ? '#008A8A' : '#BDBDBD',
+                }}
+              />
+            </View>
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name={GlucoMeterName}
+        component={GlucoMeterScreen}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image
+                source={require('../assets/chart-histogram.png')}
+                resizeMode="contain"
+                style={{
+                  width: 25,
+                  height: 25,
+                  tintColor: focused ? '#008A8A' : '#BDBDBD',
+                }}
+              />
+            </View>
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name={CalenderName}
+        component={CalenderScreen}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image
+                source={require('../assets/calendar.png')}
+                resizeMode="contain"
+                style={{
+                  width: 25,
+                  height: 25,
+                  tintColor: focused ? '#008A8A' : '#BDBDBD',
+                }}
+              />
+            </View>
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name={ContactName}
+        component={ContactScreen}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image
+                source={require('../assets/address-book.png')}
+                resizeMode="contain"
+                style={{
+                  width: 25,
+                  height: 25,
+                  tintColor: focused ? '#008A8A' : '#BDBDBD',
+                }}
+              />
+            </View>
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name={InboxName}
+        component={InboxScreen}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image
+                source={require('../assets/envelope.png')}
+                resizeMode="contain"
+                style={{
+                  width: 25,
+                  height: 25,
+                  tintColor: focused ? '#008A8A' : '#BDBDBD',
+                }}
+              />
+            </View>
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name={MenuName}
+        component={MenuScreen}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image
+                source={require('../assets/menu-burger.png')}
+                resizeMode="contain"
+                style={{
+                  width: 25,
+                  height: 25,
+                  tintColor: focused ? '#008A8A' : '#BDBDBD',
+                }}
+              />
+            </View>
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };
