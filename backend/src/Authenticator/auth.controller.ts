@@ -1,6 +1,6 @@
 // TODO: check if this is still needed
 //import { PrismaService } from '@modules/Prisma/prisma.service';
-import { Argon2CryptoProvider } from '../providers/argon2.provider';
+import { Argon2CryptoProvider } from '../Providers/argon2.provider';
 import { UserService } from '../User/user.service';
 import {
   Body,
@@ -12,7 +12,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { User } from '@prisma/client';
-import { CurrentUser, Public } from '../decorators';
+import { CurrentUser, Public } from '../Decorators';
 import { AuthService } from './auth.service';
 import { SignInDto } from './dto/sign-in.dto';
 

@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { UserService } from '../User/user.service';
 import { User as UserModel } from '@prisma/client';
-import { CurrentUser } from '../decorators';
+import { CurrentUser } from '../Decorators';
 
 @Controller('/users')
 export class UserController {
