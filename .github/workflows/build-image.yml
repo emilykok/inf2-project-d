@@ -12,10 +12,12 @@ jobs:
 
       - name: Publish image
         uses: elgohr/Publish-Docker-Github-Action@v4
+        env:
+          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
         with:
           name: emilykok/inf2-project-d/backend
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          tags: ${{ github.head_ref || github.ref_name }}
+          tags: ${BRANCH_NAME//\//-}
           registry: ghcr.io
           workdir: backend
