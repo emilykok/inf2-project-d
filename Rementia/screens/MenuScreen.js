@@ -8,16 +8,16 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const ProfileScreen = ({navigation}) => {
+const MenuScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <Text>ProfileScreen</Text>
-      <Button title="Click here" onPress={() => alert('ProfileScreen')} />
+      <Text>MenuScreen</Text>
+      <Button title="Click here" onPress={() => alert('MenuScreen')} />
     </View>
   );
 };
 
-export default ProfileScreen;
+export default MenuScreen;
 
 const styles = StyleSheet.create({
   container: {
