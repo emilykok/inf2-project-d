@@ -1,13 +1,20 @@
+import { AuthGuard } from '../Authenticator/guards/auth.guard';
+import { PrismaModule } from '../../prisma/prima.module';
+import { ProviderModule } from '../Providers/provider.module';
+import { UserModule } from '../User/user.module';
 import { Module } from '@nestjs/common';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthModule } from '../Authenticator/auth.module';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { MessageService } from '../Message/message.service';
-import { PrismaService } from '../../prisma/prisma.service';
-import { UserService } from '../User/user.service';
 
 @Module({
-  imports: [],
+  imports: [PrismaModule, ProviderModule, AuthModule, UserModule],
   controllers: [AppController],
-  providers: [AppService, UserService, PrismaService, MessageService],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
 })
 export class AppModule {}
