@@ -6,23 +6,26 @@ import {
   Button,
   Image,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const CalenderScreen = ({navigation}) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollview}>
-        <Text style={styles.text}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Text>
+    <SafeAreaView style={styles.background}>
+      <ScrollView contentContainerStyle={{flexGrow: 1}}>
+        <View>
+          <Text style={styles.titletext}> Calender </Text>
+        </View>
+        <View style={styles.container}>
+          <View style={styles.innercontainer}>
+            <Text style={styles.headertext}>Welcome!</Text>
+            <Text style={styles.text}>
+              This is the calender screen of our first application, this will
+              have many new features coming soon ;)
+            </Text>
+          </View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -31,15 +34,35 @@ const CalenderScreen = ({navigation}) => {
 export default CalenderScreen;
 
 const styles = StyleSheet.create({
-  container: {
+  background: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#008a8a',
   },
-  scrollview: {
-    backgroundColor: 'rgb(239, 239, 239)'
+  innercontainer: {
+    backgroundColor: '#A2DCDD',
+    padding: 20,
+    borderRadius: 10,
+  },
+  headertext: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'left',
+  },
+  titletext: {
+    fontSize: 35,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#fff',
+    padding: 20,
   },
   text: {
-  }
+    fontSize: 15,
+    textAlign: 'left',
+  },
+  container: {
+    backgroundColor: '#efefef',
+    flex: 1,
+    borderRadius: 5,
+    padding: 10,
+  },
 });

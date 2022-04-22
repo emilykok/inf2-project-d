@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   View,
   Text,
@@ -6,24 +7,63 @@ import {
   Button,
   Image,
   TouchableOpacity,
+  SafeAreaView,
+  ScrollView,
 } from 'react-native';
 
 const InboxScreen = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <Text>InboxScreen</Text>
-      <Button title="Click here" onPress={() => alert('InboxScreen')} />
-    </View>
+    <SafeAreaView style={styles.background}>
+      <ScrollView contentContainerStyle={{flexGrow: 1}}>
+        <View>
+          <Text style={styles.titletext}> Inbox </Text>
+        </View>
+        <View style={styles.container}>
+          <View style={styles.innercontainer}>
+            <Text style={styles.headertext}>Welcome!</Text>
+            <Text style={styles.text}>
+              This is the inbox screen of our first application, this will have
+              many new features coming soon ;)
+            </Text>
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 export default InboxScreen;
 
 const styles = StyleSheet.create({
-  container: {
+  background: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#008a8a',
+  },
+  innercontainer: {
+    backgroundColor: '#A2DCDD',
+    padding: 20,
+    borderRadius: 10,
+  },
+  headertext: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'left',
+  },
+  titletext: {
+    fontSize: 35,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#fff',
+    padding: 20,
+  },
+  text: {
+    fontSize: 15,
+    textAlign: 'left',
+  },
+  container: {
+    backgroundColor: '#efefef',
+    flex: 1,
+    borderRadius: 5,
+    padding: 10,
   },
 });
