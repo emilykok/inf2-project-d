@@ -103,27 +103,30 @@ export class UserService {
     }
   }
 
-  async deleteUser(where: Prisma.UserWhereUniqueInput): Promise<User> {
-    return this.prisma.user.delete({
-      where,
+  async deleteUser(id: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { id },
+      select: { id: true },
     });
+    if (!user) throw new NotFoundError('user_not_found');
+    return this.prisma.user.delete({ where: { id } });
   }
 
   // Find user by id
-  async findUserById(id: string): Promise<User> {
-    return this.prisma.user.findUnique({
-      where: {
-        id,
-      },
+  async findUserById(userId: User['id']) {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
     });
+    if (!user) throw new NotFoundError('user_not_found');
+    return user;
   }
 
   // Find user by email
-  async findUserByEmail(email: string): Promise<User> {
-    return this.prisma.user.findFirst({
-      where: {
-        email,
-      },
+  async findUserByEmail(userEmail: User['email']): Promise<User> {
+    const user = await this.prisma.user.findUnique({
+      where: { email: userEmail },
     });
+    if (!user) throw new NotFoundError('user_not_found');
+    return user;
   }
 }

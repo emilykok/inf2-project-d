@@ -52,6 +52,7 @@ model User {
   clearance Int @default(0)
 }
 
+//TODO: Change to conform the alert messages
 model Message {
   id        Int      @id @default(autoincrement())
   content   String

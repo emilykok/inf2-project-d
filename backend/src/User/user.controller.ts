@@ -15,7 +15,7 @@ import { CurrentUser } from '../Decorators';
 import { CreateUserDto } from './dto/create-user.dto';
 import { EditUserDto } from './dto/edit-user.dto';
 
-@Controller('/users')
+@Controller('/user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
@@ -39,5 +39,17 @@ export class UserController {
     const user: Partial<UserModel> = userData;
 
     return this.userService.editUser(currentUser.id, user);
+  }
+
+  // Deletes current user
+  @Delete('/delete')
+  async deleteUser(@CurrentUser() currentUser: UserModel) {
+    return this.userService.deleteUser(currentUser.id);
+  }
+
+  // Delete user from ID
+  @Delete('/:userId')
+  async deleteUserById(@Param('userId') id: string) {
+    return this.userService.deleteUser(id);
   }
 }
