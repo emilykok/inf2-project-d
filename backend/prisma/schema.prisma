@@ -20,6 +20,17 @@ model Contact {
   userId String
 }
 
+model Agenda {
+  id          Int      @id @default(autoincrement())
+  date        DateTime @default(now())
+  begintime   String
+  endtime     String
+  titel       String
+  description String
+  User        User     @relation(fields: [userId], references: [id])
+  userId      String
+}
+
 model GlucoseMeter {
   serial String         @id
   values GlucoseValue[]
@@ -49,7 +60,8 @@ model User {
   glucoseMeters GlucoseMeter?
 
   // Used to indicate if the user is a patient or a caregiver
-  clearance Int @default(0)
+  clearance Int      @default(0)
+  Agenda    Agenda[]
 }
 
 //TODO: Change to conform the alert messages
