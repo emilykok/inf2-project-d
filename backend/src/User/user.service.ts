@@ -59,7 +59,7 @@ export class UserService {
       },
       select: {
         id: true,
-        password: false,
+        password: true,
         email: true,
         name: true,
         phone: true,

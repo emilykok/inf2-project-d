@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { MessageService } from '../Message/message.service';
 import { PrismaService } from '../../prisma/prisma.service';
 import { UserService } from '../User/user.service';
+import { ProviderModule } from 'src/Providers/provider.module';
 
 describe('AppController', () => {
   let appController: AppController;
@@ -11,7 +12,13 @@ describe('AppController', () => {
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
-      providers: [AppService, UserService, PrismaService, MessageService],
+      providers: [
+        AppService,
+        UserService,
+        ProviderModule,
+        PrismaService,
+        MessageService,
+      ],
     }).compile();
 
     appController = app.get<AppController>(AppController);
