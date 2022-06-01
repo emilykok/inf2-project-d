@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 
-import { GlucoseMeter, GlucoseValue, Prisma } from '@prisma/client';
+import { GlucoseMeter, GlucoseValue, User, Prisma } from '@prisma/client';
 
 @Injectable()
 export class GlucoseMeterService {
@@ -32,46 +32,33 @@ export class GlucoseMeterService {
     });
   }
 
-  async createGlucoseMeter(
-    data: Prisma.GlucoseMeterCreateInput,
-  ): Promise<GlucoseMeter> {
+  async createGlucoseMeter({
+    serial,
+    userid,
+  }: {
+    serial: GlucoseMeter['serial'];
+    userid: User['id'];
+  }): Promise<GlucoseMeter> {
     return this.prisma.glucoseMeter.create({
-      data,
-    });
-  }
-
-  async deleteGlucoseMeter(
-    where: Prisma.GlucoseMeterWhereUniqueInput,
-  ): Promise<GlucoseMeter> {
-    return this.prisma.glucoseMeter.delete({
-      where,
-    });
-  }
-
-  // Get glucose meter data by user id
-  async getGlucoseMeterDataByUserId(userId: string): Promise<GlucoseValue[]> {
-    return this.prisma.glucoseValue.findMany({
-      where: {
-        GlucoseMeter: {
-          userId,
+      data: {
+        serial: serial,
+        User: {
+          connect: {
+            id: userid,
+          },
         },
       },
     });
   }
 
-  // Get glucose meter data by user id and date
-  async getGlucoseMeterDataByUserIdAndDate(
-    userId: string,
-    timestamp: Date,
-  ): Promise<GlucoseValue> {
-    return this.prisma.glucoseValue.findFirst({
-      where: {
-        GlucoseMeter: {
-          userId,
-        },
-        timestamp: {
-          equals: timestamp,
-        },
+  async updateGlucoseMeter(
+    glucoseMeterWhereUniqueInput: Prisma.GlucoseMeterWhereUniqueInput,
+    data: GlucoseMeter,
+  ): Promise<GlucoseMeter> {
+    return this.prisma.glucoseMeter.update({
+      where: glucoseMeterWhereUniqueInput,
+      data: {
+        ...data,
       },
     });
   }
