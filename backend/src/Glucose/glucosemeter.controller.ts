@@ -1,55 +1,55 @@
-import {
-  Controller,
-  Get,
-  Param,
-  Post,
-  Body,
-  Patch,
-  Put,
-  Delete,
-  ForbiddenException,
-} from '@nestjs/common';
-import { GlucoseMeterService } from '../Glucose/glucosemeter.service';
-import { User as UserModel } from '@prisma/client';
-import { CurrentUser } from '../Decorators';
-import { CreateUserDto } from './dto/create-user.dto';
-import { EditUserDto } from './dto/edit-user.dto';
+// import {
+//   Controller,
+//   Get,
+//   Param,
+//   Post,
+//   Body,
+//   Patch,
+//   Put,
+//   Delete,
+//   ForbiddenException,
+// } from '@nestjs/common';
+// import { GlucoseMeterService } from '../Glucose/glucosemeter.service';
+// import { User as UserModel } from '@prisma/client';
+// import { CurrentUser } from '../Decorators';
+// import { CreateUserDto } from './dto/create-user.dto';
+// import { EditUserDto } from './dto/edit-user.dto';
 
-@Controller('/user')
-export class UserController {
-  constructor(private readonly glucoseMeter: GlucoseMeterService) {}
+// @Controller('/user')
+// export class UserController {
+//   constructor(private readonly glucoseMeter: GlucoseMeterService) {}
 
-  @Get('/:id')
-  async getUserById(@CurrentUser() _user: UserModel, @Param('id') id: string) {
-    if (id === '@me') return _user;
-    return this.userService.findUserById(id);
-  }
+//   @Get('/:id')
+//   async getUserById(@CurrentUser() _user: UserModel, @Param('id') id: string) {
+//     if (id === '@me') return _user;
+//     return this.userService.findUserById(id);
+//   }
 
-  @Post()
-  async createUser(@Body() userData: CreateUserDto) {
-    return this.userService.createUser(userData);
-  }
+//   @Post()
+//   async createUser(@Body() userData: CreateUserDto) {
+//     return this.userService.createUser(userData);
+//   }
 
-  @Patch('/:userId')
-  async updateUser(
-    @CurrentUser() currentUser: UserModel,
-    @Param('userId') id: string,
-    @Body() userData: EditUserDto,
-  ) {
-    const user: Partial<UserModel> = userData;
+//   @Patch('/:userId')
+//   async updateUser(
+//     @CurrentUser() currentUser: UserModel,
+//     @Param('userId') id: string,
+//     @Body() userData: EditUserDto,
+//   ) {
+//     const user: Partial<UserModel> = userData;
 
-    return this.userService.editUser(currentUser.id, user);
-  }
+//     return this.userService.editUser(currentUser.id, user);
+//   }
 
-  // Deletes current user
-  @Delete('/delete')
-  async deleteUser(@CurrentUser() currentUser: UserModel) {
-    return this.userService.deleteUser(currentUser.id);
-  }
+//   // Deletes current user
+//   @Delete('/delete')
+//   async deleteUser(@CurrentUser() currentUser: UserModel) {
+//     return this.userService.deleteUser(currentUser.id);
+//   }
 
-  // Delete user from ID
-  @Delete('/:userId')
-  async deleteUserById(@Param('userId') id: string) {
-    return this.userService.deleteUser(id);
-  }
-}
+//   // Delete user from ID
+//   @Delete('/:userId')
+//   async deleteUserById(@Param('userId') id: string) {
+//     return this.userService.deleteUser(id);
+//   }
+// }

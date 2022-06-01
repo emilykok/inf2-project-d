@@ -6,6 +6,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "target": "es2017",
     "sourceMap": true,
     "outDir": "./dist",
@@ -16,6 +17,14 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@lib": ["./src/lib"],
+      "@lib/*": ["./src/lib/*"],
+      "@modules": ["./src/modules"],
+      "@modules/*": ["./src/modules/*"],
+      "@decorators": ["./src/decorators"],
+      "@decorators/*": ["./src/decorators/*"]
+    }
   }
 }
