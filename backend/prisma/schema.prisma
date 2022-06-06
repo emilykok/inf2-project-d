@@ -32,7 +32,7 @@ model Agenda {
 }
 
 model GlucoseMeter {
-  serial String         @id
+  serial String         @id @unique
   values GlucoseValue[]
   User   User           @relation(fields: [userId], references: [id])
   userId String         @unique
@@ -61,7 +61,7 @@ model User {
 
   // Used to indicate if the user is a patient or a caregiver
   clearance Int      @default(0)
-  Agenda    Agenda[]
+  agenda    Agenda[]
 }
 
 //TODO: Change to conform the alert messages

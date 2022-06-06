@@ -32,19 +32,27 @@ export class GlucoseMeterService {
     });
   }
 
+  async getGlucoseMeterBySerial(serial: string): Promise<GlucoseMeter> {
+    return this.prisma.glucoseMeter.findUnique({
+      where: {
+        serial,
+      },
+    });
+  }
+
   async createGlucoseMeter({
     serial,
-    userid,
+    userId,
   }: {
     serial: GlucoseMeter['serial'];
-    userid: User['id'];
+    userId: User['id'];
   }): Promise<GlucoseMeter> {
     return this.prisma.glucoseMeter.create({
       data: {
         serial: serial,
         User: {
           connect: {
-            id: userid,
+            id: userId,
           },
         },
       },
@@ -61,5 +69,40 @@ export class GlucoseMeterService {
         ...data,
       },
     });
+  }
+
+  async deleteGlucoseMeter(
+    glucoseMeterWhereUniqueInput: Prisma.GlucoseMeterWhereUniqueInput,
+  ): Promise<GlucoseMeter> {
+    return this.prisma.glucoseMeter.delete({
+      where: glucoseMeterWhereUniqueInput,
+    });
+  }
+
+  // get all glucose values for a specific glucose meter
+  async getGlucoseValues(
+    glucoseMeterWhereUniqueInput: Prisma.GlucoseMeterWhereUniqueInput,
+  ): Promise<GlucoseValue[]> {
+    return this.prisma.glucoseMeter
+      .findUnique({
+        where: glucoseMeterWhereUniqueInput,
+      })
+      .values();
+  }
+
+  // get the last 20 glucose values for a specific glucose meter
+  async getLast20GlucoseValues(
+    glucoseMeterWhereUniqueInput: Prisma.GlucoseMeterWhereUniqueInput,
+  ): Promise<GlucoseValue[]> {
+    return this.prisma.glucoseMeter
+      .findUnique({
+        where: glucoseMeterWhereUniqueInput,
+      })
+      .values({
+        orderBy: {
+          timestamp: 'desc',
+        },
+        take: 20,
+      });
   }
 }

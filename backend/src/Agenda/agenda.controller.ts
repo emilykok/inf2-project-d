@@ -31,4 +31,10 @@ export class AgendaController {
   async createAgenda(@Body() agendaData: CreateAgendaDto) {
     return this.agendaService.createAgendaItem(agendaData);
   }
+
+  // Delete agenda item
+  @Delete('/delete/:id')
+  async deleteAgenda(@Param('id') id: number) {
+    return this.agendaService.deleteAgendaItem(id);
+  }
 }

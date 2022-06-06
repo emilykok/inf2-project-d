@@ -1,55 +1,62 @@
-// import {
-//   Controller,
-//   Get,
-//   Param,
-//   Post,
-//   Body,
-//   Patch,
-//   Put,
-//   Delete,
-//   ForbiddenException,
-// } from '@nestjs/common';
-// import { GlucoseMeterService } from '../Glucose/glucosemeter.service';
-// import { User as UserModel } from '@prisma/client';
-// import { CurrentUser } from '../Decorators';
-// import { CreateUserDto } from './dto/create-user.dto';
-// import { EditUserDto } from './dto/edit-user.dto';
+import {
+  Controller,
+  Get,
+  Param,
+  Post,
+  Body,
+  Patch,
+  Put,
+  Delete,
+  ForbiddenException,
+} from '@nestjs/common';
+import { GlucoseMeterService } from '../Glucose/glucosemeter.service';
+import {
+  GlucoseMeter as GlucoseMeterModel,
+  User as UserModel,
+} from '@prisma/client';
+import { CurrentUser } from '../Decorators';
+import { createGlucoseMeterDto } from './dto/create-glucosemeter.dto';
+import { editGlucoseMeterDto } from './dto/edit-glucosemeter.dto';
 
-// @Controller('/user')
-// export class UserController {
-//   constructor(private readonly glucoseMeter: GlucoseMeterService) {}
+@Controller('/glucosemeter')
+export class GlucoseMeterController {
+  constructor(private readonly glucoseMeterService: GlucoseMeterService) {}
 
-//   @Get('/:id')
-//   async getUserById(@CurrentUser() _user: UserModel, @Param('id') id: string) {
-//     if (id === '@me') return _user;
-//     return this.userService.findUserById(id);
-//   }
+  @Get('/:serial')
+  async getGlucoseMeterBySerial(@Param('serial') serial: string) {
+    return this.glucoseMeterService.getGlucoseMeterBySerial(serial);
+  }
 
-//   @Post()
-//   async createUser(@Body() userData: CreateUserDto) {
-//     return this.userService.createUser(userData);
-//   }
+  @Post()
+  async createGlucoseMeter(@Body() glucoseMeterData: createGlucoseMeterDto) {
+    return this.glucoseMeterService.createGlucoseMeter(glucoseMeterData);
+  }
 
-//   @Patch('/:userId')
-//   async updateUser(
-//     @CurrentUser() currentUser: UserModel,
-//     @Param('userId') id: string,
-//     @Body() userData: EditUserDto,
-//   ) {
-//     const user: Partial<UserModel> = userData;
+  ////TODO: FIX SERIAL ISSUE
+  // update glucose meter
+  @Put('/update/:serial')
+  async updateGlucoseMeter(
+    @Param('serial') serial: string,
+    @Body() glucoseMeterData: editGlucoseMeterDto,
+  ) {
+    return this.glucoseMeterService.updateGlucoseMeter(
+      { serial },
+      glucoseMeterData,
+    );
+  }
 
-//     return this.userService.editUser(currentUser.id, user);
-//   }
+  @Delete('/delete/:serial')
+  async deleteGlucoseMeter(@Param('serial') serial: string) {
+    return this.glucoseMeterService.deleteGlucoseMeter({ serial });
+  }
 
-//   // Deletes current user
-//   @Delete('/delete')
-//   async deleteUser(@CurrentUser() currentUser: UserModel) {
-//     return this.userService.deleteUser(currentUser.id);
-//   }
+  @Get('/:serial/values')
+  async getGlucoseValues(@Param('serial') serial: string) {
+    return this.glucoseMeterService.getGlucoseValues({ serial });
+  }
 
-//   // Delete user from ID
-//   @Delete('/:userId')
-//   async deleteUserById(@Param('userId') id: string) {
-//     return this.userService.deleteUser(id);
-//   }
-// }
+  @Get('/:serial/values/last20')
+  async getLast20GlucoseValues(@Param('serial') serial: string) {
+    return this.glucoseMeterService.getLast20GlucoseValues({ serial });
+  }
+}

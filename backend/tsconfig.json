@@ -19,12 +19,12 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@lib": ["./src/lib"],
-      "@lib/*": ["./src/lib/*"],
-      "@modules": ["./src/modules"],
-      "@modules/*": ["./src/modules/*"],
-      "@decorators": ["./src/decorators"],
-      "@decorators/*": ["./src/decorators/*"]
+      "@Libraries": ["./src/Libraries"],
+      "@Libraries/*": ["./src/Libraries/*"],
+      //"@modules": ["./src/modules"],            // Not needed?
+      //"@modules/*": ["./src/modules/*"],
+      "@decorators": ["./src/Decorators"],
+      "@decorators/*": ["./src/Decorators/*"]
     }
   }
 }

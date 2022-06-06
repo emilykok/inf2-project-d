@@ -14,7 +14,7 @@ export class GlucoseValueService {
     });
   }
 
-  async Messages(params: {
+  async GlucoseValues(params: {
     skip?: number;
     take?: number;
     cursor?: Prisma.GlucoseValueWhereUniqueInput;
@@ -40,7 +40,7 @@ export class GlucoseValueService {
   }
 
   async deleteGlucoseValue(
-    where: Prisma.MessageWhereUniqueInput,
+    where: Prisma.GlucoseValueWhereUniqueInput,
   ): Promise<GlucoseValue> {
     return this.prisma.glucoseValue.delete({
       where,

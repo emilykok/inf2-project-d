@@ -31,6 +31,29 @@ export class MessageService {
     });
   }
 
+  // get all messages from a user
+  async getAllMessages(userId: string): Promise<Message[]> {
+    return this.prisma.message.findMany({
+      where: {
+        User: {
+          id: userId,
+        },
+      },
+    });
+  }
+
+  // get latest message from a user
+  async getLatestMessage(userId: string): Promise<Message> {
+    return this.prisma.message.findFirst({
+      where: {
+        userId,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+  }
+
   async createMessage(data: Prisma.MessageCreateInput): Promise<Message> {
     return this.prisma.message.create({
       data,
