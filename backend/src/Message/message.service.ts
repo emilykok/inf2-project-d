@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma.service';
+import { PrismaService } from '../../prisma/prisma.service';
 import { Message, Prisma } from '@prisma/client';
 
 @Injectable()
@@ -28,6 +28,29 @@ export class MessageService {
       cursor,
       where,
       orderBy,
+    });
+  }
+
+  // get all messages from a user
+  async getAllMessages(userId: string): Promise<Message[]> {
+    return this.prisma.message.findMany({
+      where: {
+        User: {
+          id: userId,
+        },
+      },
+    });
+  }
+
+  // get latest message from a user
+  async getLatestMessage(userId: string): Promise<Message> {
+    return this.prisma.message.findFirst({
+      where: {
+        userId,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
     });
   }
 

@@ -10,12 +10,17 @@ jobs:
       - name: Checkout Project
         uses: actions/checkout@v3
 
+      - uses: yeouchien/sanitize-branch-name-action@v1
+        id: sanitize
+        with:
+          branch-name: ${{ github.head_ref || github.ref_name }}
+
       - name: Publish image
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
           name: emilykok/inf2-project-d/backend
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          tags: ${{ github.head_ref || github.ref_name }}
+          tags: ${{ steps.sanitize.outputs.sanitized-branch-name }}
           registry: ghcr.io
           workdir: backend
