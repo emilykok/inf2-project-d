@@ -1,5 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 
 //import screens
 import HomeScreen from '../screens/HomeScreen';
@@ -8,7 +16,6 @@ import CalenderScreen from '../screens/CalenderScreen';
 import ContactScreen from '../screens/ContactScreen';
 import InboxScreen from '../screens/InboxScreen';
 import MenuScreen from '../screens/MenuScreen';
-import {View, Image} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 const HomeName = 'Home';
