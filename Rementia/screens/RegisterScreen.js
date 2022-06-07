@@ -8,21 +8,15 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import { AuthContext } from '../components/Context';
-
 const LoginScreen = ({navigation}) => {
-
-  const { signIn } = React.useContext(AuthContext);
-
   return (
     <View style={styles.container}>
       <Text>LoginScreen</Text>
-      <Button title="Click here" onPress={() => signIn() } />
+      <Button title="Click here" onPress={() => alert('LoginScreen')} />
     </View>
   );
 };
 
-export var IsSignedIn; 
 export default LoginScreen;
 
 const styles = StyleSheet.create({
