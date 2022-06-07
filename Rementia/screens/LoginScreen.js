@@ -12,7 +12,48 @@ import { AuthContext } from '../components/Context';
 
 const LoginScreen = ({navigation}) => {
 
+  const [data, setData] = React.useState({
+    username: '',
+    password: '',
+    check_textInputChange: false,
+    secureTextEntry: true,
+  });
+
   const { signIn } = React.useContext(AuthContext);
+
+  const textInputChange = (val) => {
+    if (val.length !== 0) {
+      setData({
+        ...data,
+        username: val,
+        check_textInputChange: true,
+      });
+    } else {
+      setData({
+        ...data,
+        username: val,
+        check_textInputChange: false,
+      });
+    }
+  };
+
+  const handlePasswordChange = (val) => {
+    setData({
+      ...data,
+      password: val,
+    });
+  };
+
+  const updateSecureTextEntry = () => {
+    setData({
+      ...data,
+      secureTextEntry: !data.secureTextEntry,
+    });
+  };
+
+  const loginHandle = (username, password) => {
+    signIn(username, password);
+  };
 
   return (
     <View style={styles.container}>
