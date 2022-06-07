@@ -86,7 +86,6 @@ const App = () => {
     },
   }), []);
 
-
   React.useEffect(() => {
     setTimeout(async() => {
       // setIsLoading(false);
@@ -103,15 +102,7 @@ const App = () => {
     }, 1000);
   }, []);
 
-  if(loginState.isloading){
-    return(
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <ActivityIndicator size="large"/>
-        <Text>Loading...</Text>
-      </View>
-    );
-  }
-
+  if(!loginState.isLoading){
   return (
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
@@ -119,6 +110,13 @@ const App = () => {
       </NavigationContainer>
     </AuthContext.Provider>
   );
-};
+  };
+  return(
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <ActivityIndicator size="large"/>
+      <Text>Loading...</Text>
+    </View>
+  );
+}
 
 export default App;

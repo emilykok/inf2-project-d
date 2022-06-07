@@ -9,8 +9,12 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
+import { AuthContext } from '../components/Context';
 
 const MenuScreen = ({navigation}) => {
+
+  const { signOut } = React.useContext(AuthContext);
+
   return (
     <SafeAreaView style={styles.background}>
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
@@ -24,6 +28,10 @@ const MenuScreen = ({navigation}) => {
               This is the menu of our first application, this will have many new
               features coming soon ;)
             </Text>
+            <Button
+              title="Sign Out"
+              onPress={() => signOut()}
+            />
           </View>
         </View>
       </ScrollView>
