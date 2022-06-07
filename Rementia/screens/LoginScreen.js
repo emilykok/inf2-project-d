@@ -6,6 +6,8 @@ import {
   Button,
   Image,
   TouchableOpacity,
+  TextInputBase,
+  TextInput,
 } from 'react-native';
 
 import { AuthContext } from '../components/Context';
@@ -52,13 +54,20 @@ const LoginScreen = ({navigation}) => {
   };
 
   const loginHandle = (username, password) => {
+    console.log(username + " " + password);
     signIn(username, password);
   };
 
   return (
     <View style={styles.container}>
       <Text>LoginScreen</Text>
-      <Button title="Click here" onPress={() => signIn() } />
+      <TextInput
+        placeholder="Username"
+        placeholderTextColor="#666666"
+        autoCapitalize="none"
+        onChangeText={(val) => textInputChange(val)}
+      />
+      <Button title="Click here" onPress={() => loginHandle(data.username, data.password) } />
     </View>
   );
 };
