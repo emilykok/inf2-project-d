@@ -24,6 +24,7 @@ const Tabs = () => {
       initialRouteName={HomeName}
       screenOptions={({route}) => ({
         tabBarShowLabel: false,
+        headerShown: false,
         tabBarStyle: {
           position: 'absolute',
           bottom: 0,
