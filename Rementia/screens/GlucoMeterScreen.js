@@ -15,7 +15,7 @@ const GlucoMeterScreen = ({navigation}) => {
     <SafeAreaView style={styles.background}>
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <View>
-          <Text style={styles.titletext}> Glucose Meter </Text>
+          <Text style={styles.titletext}> Glucosemeter </Text>
         </View>
         <View style={styles.container}>
           <Image

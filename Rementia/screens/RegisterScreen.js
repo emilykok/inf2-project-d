@@ -75,7 +75,7 @@ const RegisterScreen = ({navigation}) => {
         contentContainerStyle={{flexGrow: 1}}
         keyboardShouldPersistTaps="handled">
         <View>
-          <Text style={styles.titletext}> Register </Text>
+          <Text style={styles.titletext}> Registreren </Text>
         </View>
         <View style={styles.container}>
           <View style={styles.action}>
@@ -115,7 +115,7 @@ const RegisterScreen = ({navigation}) => {
             />
             <TextInput
               style={styles.textInput}
-              placeholder="Phone"
+              placeholder="Telefoonnummer"
               placeholderTextColor="#666666"
               autoCapitalize="none"
               onChangeText={val => textInputChange(val)}
@@ -130,7 +130,7 @@ const RegisterScreen = ({navigation}) => {
             />
             <TextInput
               style={styles.textInput}
-              placeholder="Password"
+              placeholder="Wachtwoord"
               placeholderTextColor="#666666"
               autoCapitalize="none"
               secureTextEntry={data.secureTextEntry ? true : false}
@@ -161,7 +161,7 @@ const RegisterScreen = ({navigation}) => {
             />
             <TextInput
               style={styles.textInput}
-              placeholder="Confirm Password"
+              placeholder="Bevestig wachtwoord"
               placeholderTextColor="#666666"
               autoCapitalize="none"
               secureTextEntry={data.secureTextEntry ? true : false}

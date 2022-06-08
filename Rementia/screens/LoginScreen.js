@@ -64,7 +64,7 @@ const LoginScreen = ({navigation}) => {
         contentContainerStyle={{flexGrow: 1}}
         keyboardShouldPersistTaps="handled">
         <View>
-          <Text style={styles.titletext}> Login </Text>
+          <Text style={styles.titletext}> Inloggen </Text>
         </View>
         <View style={styles.container}>
           <View style={styles.action}>
@@ -89,7 +89,7 @@ const LoginScreen = ({navigation}) => {
             />
             <TextInput
               style={styles.textInput}
-              placeholder="Password"
+              placeholder="Wachtwoord"
               placeholderTextColor="#666666"
               autoCapitalize="none"
               secureTextEntry={data.secureTextEntry ? true : false}

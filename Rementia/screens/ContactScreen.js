@@ -35,7 +35,7 @@ const ContactScreen = ({navigation}) => {
     <SafeAreaView style={styles.background}>
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <View>
-          <Text style={styles.titletext}> Contacts </Text>
+          <Text style={styles.titletext}> Contacten </Text>
         </View>
         <View style={styles.container}>
           <View style={styles.container}>
