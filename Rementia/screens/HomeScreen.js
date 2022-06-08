@@ -11,6 +11,7 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 const HomeScreen = ({navigation}) => {
+  const [selectedValue, setSelectedValue] = React.useState('Emily');
   return (
     <SafeAreaView style={styles.background}>
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
@@ -19,10 +20,9 @@ const HomeScreen = ({navigation}) => {
         </View>
         <View style={styles.container}>
           <View style={styles.innercontainer}>
-            <Text style={styles.headertext}>Welcome!</Text>
+            <Text style={styles.headertext}>Goedendag Melissa</Text>
             <Text style={styles.text}>
-              This is the home screen of our first application, this will have
-              many new features coming soon ;)
+              Je bekijkt momenteel de gegevens van:
             </Text>
           </View>
         </View>

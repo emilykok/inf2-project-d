@@ -15,6 +15,7 @@ var first = curr.getDate() - curr.getDay() + 1; // First day is the day of the m
 var last = first + 6; // last day is the first day + 6
 
 var today = curr.toUTCString();
+var date = today.slice(0, 16);
 var firstday = new Date(curr.setDate(first)).toUTCString();
 var lastday = new Date(curr.setDate(last)).toUTCString();
 
@@ -29,22 +30,19 @@ export default class CalenderScreen extends React.Component {
       <SafeAreaView style={styles.background}>
         <ScrollView contentContainerStyle={{flexGrow: 1}}>
           <View>
-            <Text style={styles.titletext}> Calender </Text>
+            <Text style={styles.titletext}> Kalender </Text>
           </View>
 
           <View style={styles.container}>
             <View>
               <View style={styles.dayselect}>
-                <Text style={styles.headertext}> Calender </Text>
+                <Text style={styles.headertext}> {date} </Text>
               </View>
             </View>
-            <View style={styles.innercontainer}>
-              <Text style={styles.headertext}>Welcome!</Text>
-              <Text style={styles.text}>
-                This is the calender screen of our first application, this will
-                have many new features coming soon ;
-              </Text>
-            </View>
+            <Image
+              style={styles.image}
+              source={require('../assets/stillKalender.png')}
+            />
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -84,9 +82,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
   },
-  dayselect: {
-    borderBottomWidth: 10,
-    borderColor: '#BDBDBD',
-    borderRadius: 5,
+  image: {
+    width: '100%',
+    marginBottom: 50,
+    resizeMode: 'contain',
   },
 });

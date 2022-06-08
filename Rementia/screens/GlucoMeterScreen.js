@@ -18,11 +18,15 @@ const GlucoMeterScreen = ({navigation}) => {
           <Text style={styles.titletext}> Glucose Meter </Text>
         </View>
         <View style={styles.container}>
+          <Image
+            style={styles.image}
+            source={require('../assets/glucochart.png')}
+          />
           <View style={styles.innercontainer}>
-            <Text style={styles.headertext}>Welcome!</Text>
+            <Text style={styles.headertext}>Gezond!</Text>
             <Text style={styles.text}>
-              This is the glucose meter screen of our first application, this
-              will have many new features coming soon ;)
+              De huidige glucosewaardes van het bloedgehalte van de
+              geselecteerde patient is goed
             </Text>
           </View>
         </View>
@@ -39,7 +43,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#008a8a',
   },
   innercontainer: {
-    backgroundColor: '#A2DCDD',
+    backgroundColor: '#7edc6b',
     padding: 20,
     borderRadius: 10,
   },
@@ -64,5 +68,10 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 5,
     padding: 10,
+  },
+  image: {
+    width: '100%',
+    resizeMode: 'contain',
+    height: '50%',
   },
 });
