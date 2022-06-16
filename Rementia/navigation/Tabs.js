@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
   View,
@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Button,
   Image,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 
@@ -17,6 +18,8 @@ import ContactScreen from '../screens/ContactScreen';
 import InboxScreen from '../screens/InboxScreen';
 import MenuScreen from '../screens/MenuScreen';
 
+import {AuthContext} from '../components/Context';
+
 const Tab = createBottomTabNavigator();
 const HomeName = 'Home';
 const GlucoMeterName = 'GlucoMeter';
@@ -26,6 +29,30 @@ const InboxName = 'Inbox';
 const MenuName = 'Menu';
 
 const Tabs = () => {
+  const {signOut} = React.useContext(AuthContext);
+  const [showBox, setShowBox] = useState(true);
+
+  const showConfirmDialog = () => {
+    return Alert.alert(
+      'Weet je het zeker?',
+      'Je staat op het punt om uit te loggen',
+      [
+        // The "Yes" button
+        {
+          text: 'Ja',
+          onPress: () => {
+            setShowBox(false);
+            signOut();
+          },
+        },
+        // The "No" button
+        // Does nothing but dismiss the dialog when tapped
+        {
+          text: 'Nee',
+        },
+      ],
+    );
+  };
   return (
     <Tab.Navigator
       initialRouteName={HomeName}
@@ -139,7 +166,7 @@ const Tabs = () => {
         }}
       />
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name={MenuName}
         component={MenuScreen}
         options={{
@@ -147,6 +174,32 @@ const Tabs = () => {
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
               <Image
                 source={require('../assets/menu-burger.png')}
+                resizeMode="contain"
+                style={{
+                  width: 25,
+                  height: 25,
+                  tintColor: focused ? '#008A8A' : '#BDBDBD',
+                }}
+              />
+            </View>
+          ),
+        }}
+      /> */}
+
+      <Tab.Screen
+        name="Logout"
+        component={MenuScreen}
+        listeners={({navigation}) => ({
+          tabPress: event => {
+            event.preventDefault();
+            showConfirmDialog();
+          },
+        })}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image
+                source={require('../assets/logout.png')}
                 resizeMode="contain"
                 style={{
                   width: 25,
