@@ -35,18 +35,128 @@ const ContactScreen = ({navigation}) => {
     <SafeAreaView style={styles.background}>
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <View>
-          <Text style={styles.titletext}> Contacts </Text>
+          <Text style={styles.titletext}> Contacten </Text>
         </View>
         <View style={styles.container}>
-          <View style={styles.container}>
-            <SectionList
-              sections={UserData}
-              renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
-              renderSectionHeader={({section}) => (
-                <Text style={styles.sectionHeader}>{section.title}</Text>
-              )}
-              keyExtractor={(item, index) => index}
-            />
+          <View style={styles.concactBox}>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+              }}>
+              <View>
+                <Image
+                  style={styles.image}
+                  source={require('../assets/henk.jpg')}
+                />
+              </View>
+              <View>
+                <Text style={styles.headertext}>Henk</Text>
+
+                <Text style={styles.text}>Telefoonnummer: 06-12345678</Text>
+                <Text style={styles.text}>Email: henk@gmail.com</Text>
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.concactBox}>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+              }}>
+              <View>
+                <Image
+                  style={styles.image}
+                  source={require('../assets/nugs.jpg')}
+                />
+              </View>
+              <View>
+                <Text style={styles.headertext}>Sara</Text>
+
+                <Text style={styles.text}>Telefoonnummer: 06-12345678</Text>
+                <Text style={styles.text}>Email: wasbever@gmail.com</Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.concactBox}>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+              }}>
+              <View>
+                <Image
+                  style={styles.image}
+                  source={require('../assets/harrie.jpg')}
+                />
+              </View>
+              <View>
+                <Text style={styles.headertext}>Harrie</Text>
+                <Text style={styles.text}>Telefoonnummer: 06-12345678</Text>
+                <Text style={styles.text}>Email: harrieee@gmail.com</Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.concactBox}>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+              }}>
+              <View>
+                <Image
+                  style={styles.image}
+                  source={require('../assets/hutao.jpg')}
+                />
+              </View>
+              <View>
+                <Text style={styles.headertext}>Hu-Tao</Text>
+
+                <Text style={styles.text}>Telefoonnummer: 06-12345678</Text>
+                <Text style={styles.text}>Email: yahoo@gmail.com</Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.concactBox}>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+              }}>
+              <View>
+                <Image
+                  style={styles.image}
+                  source={require('../assets/emma.jpg')}
+                />
+              </View>
+              <View>
+                <Text style={styles.headertext}>Emma</Text>
+
+                <Text style={styles.text}>Telefoonnummer: 06-12345678</Text>
+                <Text style={styles.text}>Email: emmer@gmail.com</Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.concactBox}>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+              }}>
+              <View>
+                <Image
+                  style={styles.image}
+                  source={require('../assets/frogpfp.jpg')}
+                />
+              </View>
+              <View>
+                <Text style={styles.headertext}>Lauren</Text>
+
+                <Text style={styles.text}>Telefoonnummer: 06-12345678</Text>
+                <Text style={styles.text}>Email: kikkers@gmail.com</Text>
+              </View>
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -57,31 +167,22 @@ const ContactScreen = ({navigation}) => {
 export default ContactScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  sectionHeader: {
-    paddingTop: 2,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 2,
-    fontSize: 14,
-    fontWeight: 'bold',
-    backgroundColor: '#BDBDBD',
-  },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
-  },
   background: {
     flex: 1,
     backgroundColor: '#008a8a',
+    marginBottom: 50,
   },
-  innercontainer: {
+  concactBox: {
     backgroundColor: '#A2DCDD',
     padding: 20,
     borderRadius: 10,
+    marginBottom: 10,
+  },
+  inboxMessageRead: {
+    backgroundColor: '#E4E4E4',
+    padding: 20,
+    borderRadius: 10,
+    marginBottom: 10,
   },
   headertext: {
     fontSize: 20,
@@ -99,10 +200,22 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: 'left',
   },
+  smalltext: {
+    fontSize: 10,
+    textAlign: 'right',
+    color: '#008A8A',
+  },
+
   container: {
     backgroundColor: '#efefef',
     flex: 1,
     borderRadius: 5,
     padding: 10,
+  },
+  image: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    marginRight: 10,
   },
 });
