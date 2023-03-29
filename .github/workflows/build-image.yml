@@ -16,7 +16,7 @@ jobs:
           branch-name: ${{ github.head_ref || github.ref_name }}
 
       - name: Publish image
-        uses: elgohr/Publish-Docker-Github-Action@v4
+        uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           name: emilykok/inf2-project-d/backend
           username: ${{ github.actor }}
